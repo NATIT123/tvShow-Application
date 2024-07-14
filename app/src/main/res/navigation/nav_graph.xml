@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/showsFragment">
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.tvshowsapplication.Fragments.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_favoriteFragment_to_deatilShowsFragment"
+            app:destination="@id/deatilShowsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.tvshowsapplication.Fragments.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_searchFragment_to_deatilShowsFragment"
+            app:destination="@id/deatilShowsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showsFragment"
+        android:name="com.example.tvshowsapplication.Fragments.ShowsFragment"
+        android:label="ShowsFragment">
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_showsFragment_to_deatilShowsFragment"
+            app:destination="@id/deatilShowsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deatilShowsFragment"
+        android:name="com.example.tvshowsapplication.Fragments.DetailShowFragment"
+        android:label="fragment_deatil_shows"
+        tools:layout="@layout/fragment_deatil_show" >
+        <argument
+            android:name="idShow"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_deatilShowsFragment_to_showsFragment"
+            app:destination="@id/showsFragment" />
+        <argument
+            android:name="tvShow"
+            app:argType="com.example.tvshowsapplication.models.TvShow" />
+    </fragment>
+</navigation>

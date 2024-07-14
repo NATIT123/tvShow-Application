@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isLoading"
+            type="boolean" />
+
+        <variable
+            name="tvShowImageURL"
+            type="String" />
+
+        <variable
+            name="tvNameShow"
+            type="String" />
+
+        <variable
+            name="tvNetworkShow"
+            type="String" />
+
+        <variable
+            name="tvStatusShow"
+            type="String" />
+
+        <variable
+            name="tvStartedOn"
+            type="String" />
+
+        <variable
+            name="tvDescription"
+            type="String" />
+
+        <variable
+            name="tvRate"
+            type="String" />
+
+        <variable
+            name="tvGenre"
+            type="String" />
+
+        <variable
+            name="tvMinute"
+            type="String" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            tools:context=".Fragments.DetailShowFragment">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
+                app:title="Detail Shows"
+                app:titleTextColor="@color/White" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager2_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160sdp"
+                android:layout_below="@+id/toolbar"
+                android:visibility="gone" />
+
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/circle_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_8sdp"
+                android:layout_alignBottom="@id/view_pager2_image"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                app:ci_drawable="@color/Yellow"
+                app:ci_drawable_unselected="@color/Blue" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/viewFadingEdge"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="@{isLoading ?View.VISIBLE : View.GONE, default=gone}" />
+
+            <View
+                android:id="@+id/viewFadingEdge"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_below="@id/view_pager2_image"
+                android:background="@drawable/background_fading_edge" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageTvShow"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_below="@id/view_pager2_image"
+                android:layout_alignParentStart="true"
+                android:imageCircleURL="@{tvShowImageURL}"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_arrow_back_24" />
+
+            <TextView
+
+                android:id="@+id/tvNameShows"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewFadingEdge"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_toEndOf="@id/imageTvShow"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{tvNameShow}"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvNetWorkShows"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNameShows"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toEndOf="@id/imageTvShow"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{tvNetworkShow}"
+                android:textColor="@color/Yellow"
+                android:textSize="@dimen/_14sdp" />
+
+
+            <TextView
+                android:id="@+id/tvStatusShows"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNetWorkShows"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toEndOf="@id/imageTvShow"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{tvStatusShow}"
+                android:textColor="@color/YellowGreen"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/tvStartedShows"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvStatusShows"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toEndOf="@id/imageTvShow"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text='@{"Started on: " +tvStartedOn }'
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageTvShow"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="4"
+                android:text='@{tvDescription}'
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/tvReadMore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDescription"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="4"
+                android:text='Read More'
+                android:textColor="@color/CadetBlue"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvReadMore"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:dividerColor="@color/LightGrey"
+                app:dividerThickness="@dimen/_1sdp" />
+
+            <LinearLayout
+                android:id="@+id/layout_main1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider1"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvRateShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{tvRate}"
+                    android:textColor="@color/White"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/baseline_star_24" />
+
+                <TextView
+                    android:id="@+id/tvGenreShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="@{tvGenre}"
+                    android:textColor="@color/White"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/baseline_category_24" />
+
+                <TextView
+                    android:id="@+id/tvMinuteShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text='@{tvMinute + "Minutes"}'
+                    android:textColor="@color/White"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/baseline_access_time_24" />
+            </LinearLayout>
+
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_main1"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:dividerColor="@color/LightGrey"
+                app:dividerThickness="@dimen/_1sdp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider2"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:backgroundTint="@color/Blue"
+                    android:id="@+id/btnWebsite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="WEBSITE"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:textColor="@color/Black"
+                    android:backgroundTint="@color/YellowGreen"
+                    android:id="@+id/btnEpisodes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:text="EPISODES"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnFavorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:backgroundTint="@color/Red"
+                android:src="@drawable/baseline_favorite_24" />
+        </RelativeLayout>
+    </ScrollView>
+</layout>
